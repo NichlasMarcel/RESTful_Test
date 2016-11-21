@@ -34,11 +34,11 @@ import static org.junit.Assert.*;
  *
  * @author Nichlas
  */
-public class RESTful {
+public class RESTful_Test {
 
-    String BASE_URI = "http://localhost:8080/RESTful_V2/webresources/";
+    String BASE_URI = "http://localhost:8080/RESTful/webresources/";
 
-    public RESTful() {
+    public RESTful_Test() {
     }
 
     @BeforeClass
@@ -84,7 +84,7 @@ public class RESTful {
         int status_code_expected_result = Response.Status.CREATED.getStatusCode();
 
         try {
-            Itinerary i = new Itinerary();
+            Itinerary_2 i = new Itinerary_2();
             i.flightsBookingNumbers.add("123123");
             i.hotelsBookingNumbers.add("68678768");
             ObjectMapper obj = new ObjectMapper();
@@ -234,4 +234,68 @@ public class RESTful {
         }
         assertEquals(status_code_expected_result, status_code_result);
     }
+
+    @Test
+    public void testP1() {
+
+        // Plan flight
+        // Plan hotel
+        // Plan flight
+        // Plan flight
+        // Plan hotel
+        // Check if they are booked
+        // Book them
+        // Check that they are booked
+    }
+
+    @Test
+    public void testP2() {
+
+        // Plan itinerary
+        // add flight
+        // Remove the itinerary without booking it beforehand.
+    }
+
+    @Test
+    public void testP2b() {
+        // Plan an itinerary with three bookings (mixed ights amd hotels)
+
+        // Get the itinerary and make sure that the booking status is unconfirmed for each entry.
+        // Then book the itinerary. During booking, the second booking should fail.
+
+        /*
+         Check that the result of the bookTrip operation
+         records a failure (either an exception or returns a failure HTTP status code).
+         */
+        /*
+         Get the itinerary
+         and check that the returned itinerary has cancelled as the booking status of the rst booking and
+         unconfirmed for the status of the second and third booking.
+         */
+    }
+
+    @Test
+    public void testC1() {
+        /*
+         (cancel booking) Create an itinerary with three bookings (mixed 
+         ights and hotels) and book it.
+         Get the itinerary and make sure that the booking status is confirmed for each entry. Cancel the
+         trip and check that now the booking status is cancelled for all bookings of the itinerary.
+         */
+    }
+
+    @Test
+    public void testC2() {
+        /*
+         (cancelling fails) 
+        Create an itinerary with three bookings and book it. 
+        Make sure that the booking status is confirmed for each entry. 
+        During cancelling of the trip, the cancellation of the second booking should fail.
+        Check that the cancelling resulted in an error condition (e.g. an exception or a
+         failure HTTP status code). 
+        Get the itinerary and check that the returned itinerary has cancelled
+         as the rst and third booking and confirmed for the second booking.
+         */
+    }
+
 }
